@@ -1,0 +1,41 @@
+stages:
+  - build
+  - test
+  - deploy
+
+Server:
+  stage: build
+  script:
+    - echo "Building Server"
+    # Add commands to build the server
+
+DB:
+  stage: build
+  script:
+    - echo "Building DB"
+    # Add commands to build the DB
+
+SeedNode:
+  stage: build
+  script:
+    - echo "Building SeedNode"
+    # Add commands to build the SeedNode
+
+Trading:
+  stage: build
+  script:
+    - echo "Building Trading"
+    # Add commands to build the Trading module
+
+Test:
+  stage: test
+  script:
+    - echo "Running Tests"
+    # Add commands to run tests
+
+Deploy:
+  stage: deploy
+  script:
+    - echo "Deploying"
+    # Add commands to deploy the application
+

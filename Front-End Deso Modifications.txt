@@ -1,0 +1,37 @@
+
+To modify the front-end code of the Deso Protocol frontend repository (https://github.com/deso-protocol/frontend) and create a dark/neon theme, you can follow these steps:
+
+Clone the Repository: Start by cloning the frontend repository to your local development environment. Use the following command in your terminal or Git client:
+shell
+Copy code
+git clone https://github.com/deso-protocol/frontend.git
+Install Dependencies: Navigate to the cloned repository directory and install the required dependencies by running the following command:
+shell
+Copy code
+cd frontend
+npm install
+Modify the Styling: Locate the relevant CSS files or stylesheets in the project structure that control the overall styling of the application. You may find files such as styles.css or directories like src/styles where the styling is defined. Edit these files to apply the dark/neon theme by adjusting the color schemes, typography, and any other visual elements as desired.
+
+Build the Frontend: After making the necessary modifications, build the frontend application using the following command:
+
+shell
+Copy code
+npm run build
+This command will generate the production-ready build of the frontend code.
+
+Deploy the Frontend: Once the build process is complete, you can deploy the modified frontend code to a web server or hosting platform of your choice. This will make the dark/neon-themed frontend accessible to users.
+Regarding the options on the homepage front-end creator landing page, the possibilities are flexible and depend on your specific requirements. However, here are some ideas:
+
+DEX Integration: You can showcase a section that highlights the features of your DEX, such as trading pairs, liquidity pools, and transaction statistics. You may display real-time price charts, trading volume, or a simplified trading interface.
+
+Bot Integration: If you have integrated AI-powered trading bots, you can provide information about their functionalities, performance metrics, and how users can interact with them. Consider including performance statistics, trading strategies, and a user-friendly interface to configure and monitor the bots.
+
+NFT Marketplace: If you have an NFT marketplace, the homepage can showcase featured NFT collections, trending NFTs, and upcoming auctions. You can provide filters, search functionality, and a visually appealing gallery to browse and purchase NFTs.
+
+Social Features: Consider including social features like user profiles, followers, and user-generated content. This can enhance the community engagement within your platform, allowing creators to showcase their work, interact with followers, and collaborate with others.
+
+News and Updates: Provide a section to display the latest news, updates, and announcements related to your platform. This can include project updates, new feature releases, and important events in the crypto and blockchain industry.
+
+Remember to ensure that the chosen options align with your overall platform goals, user needs, and the functionalities you have implemented on the backend.
+
+Feel free to mix and match these options, add custom features from your config.yaml, and incorporate your own ideas to create a compelling homepage for the frontend creator landing page.

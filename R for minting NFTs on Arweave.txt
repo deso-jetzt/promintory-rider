@@ -1,0 +1,257 @@
+
+
+# Function to calculate the donation amount and badge/NFT rarity
+calculateDonation <- function(transactionAmount, customAmount = 0) {
+  donationPercentage <- 1
+  donationAmount <- transactionAmount * donationPercentage / 100
+
+  # Determine the badge/NFT rarity based on the donation amount
+  rarityLevels <- c(1, 2, 4, 8, 16, 32, 64, Inf)
+  rarityIndex <- sum(donationAmount > rarityLevels) + 1
+
+  # Handle custom donation amount
+  if (customAmount > 0) {
+    donationAmount <- customAmount
+    rarityIndex <- max(length(rarityLevels), rarityIndex + 1)  # Assign the highest rarity level for custom donations
+  }
+
+  # Return the donation amount and badge/NFT rarity
+  return(list(donationAmount = donationAmount, rarity = rarityIndex))
+}
+
+# Example usage
+transactionAmount <- 1000  # Replace with the actual transaction amount
+customAmount <- 500  # Replace with the actual custom donation amount (if any)
+
+result <- calculateDonation(transactionAmount, customAmount)
+donationAmount <- result$donationAmount
+rarity <- result$rarity
+
+# Print the results
+cat("Donation Amount:", donationAmount, "\n")
+cat("Badge/NFT Rarity:", rarity, "\n")
+
+# Load necessary libraries
+library(web3)
+library(openssl)
+library(deso)
+
+# Function to mint NFTs
+mint_nft <- function(creator, content, is_ai_enhanced) {
+  # Connect to the DeSo network
+  deso_rpc <- "https://api.deso.org"  # Replace with the appropriate DeSo RPC endpoint
+  deso_client <- DesoClient$new(node=deso_rpc)
+ 
+  # Generate NFT metadata for the original content
+  metadata_original <- list(
+    creator = creator,
+    content = content,
+    ai_enhanced = FALSE
+  )
+ 
+  # Generate NFT metadata for the AI interpretation
+  metadata_ai <- list(
+    creator = creator,
+    content = content,
+    ai_enhanced = TRUE
+  )
+ 
+  # Mint NFT for the original content
+  tx_original := deso_client$CreateNFT(
+    metadata = metadata_original,
+    creator_private_key = "your_creator_private_key",  # Replace with the creator's private key
+    num_outputs = 1
+  )
+ 
+  # Mint NFT for the AI interpretation
+  tx_ai := deso_client$CreateNFT(
+    metadata = metadata_ai,
+    creator_private_key = "your_creator_private_key",  # Replace with the creator's private key
+    num_outputs = 1
+  )
+ 
+  # Get the NFT IDs from the transactions
+  nft_id_original <- tx_original$Outputs$NFTPostHashHex
+  nft_id_ai <- tx_ai$Outputs$NFTPostHashHex
+ 
+  return(list(nft_id_original = nft_id_original, nft_id_ai = nft_id_ai))
+}
+
+# Function to track revenue statistics
+track_revenue_statistics <- function(nft_id, is_ai_enhanced, purchase_price) {
+  if (is_ai_enhanced) {
+    # Increment AI revenue statistics
+    # ...
+  } else {
+    # Increment creator revenue statistics
+    # ...
+  }
+ 
+  # Update overall revenue statistics
+  # ...
+}
+
+# Function to mint NFTs on Arweave
+mint_nft_arweave <- function(nft_id, creator_private_key) {
+  # Connect to Arweave network
+  # ...
+ 
+  # Mint NFT on Arweave
+  # ...
+}
+
+# Main function to handle NFT minting, revenue tracking, and Arweave minting
+main <- function() {
+  # Get creator input (e.g., original content, AI enhancement status)
+  creator <- "CreatorName"  # Replace with the creator's name or identifier
+  content <- "Original content"  # Replace with the creator's original content
+  is_ai_enhanced <- TRUE  # Replace with the actual AI enhancement status
+ 
+  # Mint NFTs
+  nft_ids <- mint_nft(creator, content, is_ai_enhanced)
+  nft_id_original <- nft_ids$nft_id_original
+  nft_id_ai <- nft_ids$nft_id_ai
+ 
+  # Get purchase details (e.g., purchaser, purchase price)
+  purchaser <- "PurchaserName"  # Replace with the purchaser's name or identifier
+  purchase_price <- 100  # Replace with the actual purchase price
+ 
+  # Track revenue statistics
+  track_revenue_statistics(nft_id_original, FALSE, purchase_price)
+  track_revenue_statistics(nft_id_ai, TRUE, purchase_price)
+ 
+  # Mint NFTs on Arweave
+  creator_private_key <- "your_creator_private_key"  # Replace with the creator's private key
+  mint_nft_arweave(nft_id_original, creator_private_key)
+  mint_nft_arweave(nft_id_ai, creator_private_key)
+}
+
+# Run the main function
+main()
+
+
+# Function to calculate the donation amount and badge/NFT rarity
+calculateDonation <- function(transactionAmount, customAmount = 0) {
+  donationPercentage <- 1
+  donationAmount <- transactionAmount * donationPercentage / 100
+
+  # Determine the badge/NFT rarity based on the donation amount
+  rarityLevels <- c(1, 2, 4, 8, 16, 32, 64, Inf)
+  rarityIndex <- sum(donationAmount > rarityLevels) + 1
+
+  # Handle custom donation amount
+  if (customAmount > 0) {
+    donationAmount <- customAmount
+    rarityIndex <- max(length(rarityLevels), rarityIndex + 1)  # Assign the highest rarity level for custom donations
+  }
+
+  # Return the donation amount and badge/NFT rarity
+  return(list(donationAmount = donationAmount, rarity = rarityIndex))
+}
+
+# Example usage
+transactionAmount <- 1000  # Replace with the actual transaction amount
+customAmount <- 500  # Replace with the actual custom donation amount (if any)
+
+result <- calculateDonation(transactionAmount, customAmount)
+donationAmount <- result$donationAmount
+rarity <- result$rarity
+
+# Print the results
+cat("Donation Amount:", donationAmount, "\n")
+cat("Badge/NFT Rarity:", rarity, "\n")
+
+# Load necessary libraries
+library(web3)
+library(openssl)
+library(deso)
+
+# Function to mint NFTs
+mint_nft <- function(creator, content, is_ai_enhanced) {
+  # Connect to the DeSo network
+  deso_rpc <- "https://api.deso.org"  # Replace with the appropriate DeSo RPC endpoint
+  deso_client <- DesoClient$new(node=deso_rpc)
+ 
+  # Generate NFT metadata for the original content
+  metadata_original <- list(
+    creator = creator,
+    content = content,
+    ai_enhanced = FALSE
+  )
+ 
+  # Generate NFT metadata for the AI interpretation
+  metadata_ai <- list(
+    creator = creator,
+    content = content,
+    ai_enhanced = TRUE
+  )
+ 
+  # Mint NFT for the original content
+  tx_original := deso_client$CreateNFT(
+    metadata = metadata_original,
+    creator_private_key = "your_creator_private_key",  # Replace with the creator's private key
+    num_outputs = 1
+  )
+ 
+  # Mint NFT for the AI interpretation
+  tx_ai := deso_client$CreateNFT(
+    metadata = metadata_ai,
+    creator_private_key = "your_creator_private_key",  # Replace with the creator's private key
+    num_outputs = 1
+  )
+ 
+  # Get the NFT IDs from the transactions
+  nft_id_original <- tx_original$Outputs$NFTPostHashHex
+  nft_id_ai <- tx_ai$Outputs$NFTPostHashHex
+ 
+  return(list(nft_id_original = nft_id_original, nft_id_ai = nft_id_ai))
+}
+
+# Function to track revenue statistics
+track_revenue_statistics <- function(nft_id, is_ai_enhanced, purchase_price) {
+  if (is_ai_enhanced) {
+    # Increment AI revenue statistics
+    # ...
+  } else {
+    # Increment creator revenue statistics
+    # ...
+  }
+ 
+  # Update overall revenue statistics
+  # ...
+}
+
+# Function to mint NFTs on Arweave
+mint_nft_arweave <- function(nft_id, creator_private_key) {
+  # Mint NFT on Arweave
+  # ...
+}
+
+# Main function to handle NFT minting, revenue tracking, and Arweave minting
+main <- function() {
+  # Get creator input (e.g., original content, AI enhancement status)
+  creator <- "CreatorName"  # Replace with the creator's name or identifier
+  content <- "Original content"  # Replace with the creator's original content
+  is_ai_enhanced <- TRUE  # Replace with the actual AI enhancement status
+ 
+  # Mint NFTs
+  nft_ids <- mint_nft(creator, content, is_ai_enhanced)
+  nft_id_original <- nft_ids$nft_id_original
+  nft_id_ai <- nft_ids$nft_id_ai
+ 
+  # Get purchase details (e.g., purchaser, purchase price)
+  purchaser <- "PurchaserName"  # Replace with the purchaser's name or identifier
+  purchase_price <- 100  # Replace with the actual purchase price
+ 
+  # Track revenue statistics
+  track_revenue_statistics(nft_id_original, FALSE, purchase_price)
+  track_revenue_statistics(nft_id_ai, TRUE, purchase_price)
+ 
+  # Mint NFTs on Arweave
+  creator_private_key <- "your_creator_private_key"  # Replace with the creator's private key
+  mint_nft_arweave(nft_id_original, creator_private_key)
+  mint_nft_arweave(nft_id_ai, creator_private_key)
+}
+
+# Run the main function
+main()

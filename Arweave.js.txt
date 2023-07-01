@@ -1,0 +1,68 @@
+const Arweave = require('arweave');
+const fs = require('fs');
+const readline = require('readline');
+
+const arweave = Arweave.init({
+  host: 'arweave.net',
+  port: 443,
+  protocol: 'https',
+});
+
+const uploadToArweave = async (filePath, walletAddress, walletPrivateKey) => {
+  try {
+    const data = fs.readFileSync(filePath);
+
+    const transaction = await arweave.createTransaction({ data }, walletPrivateKey);
+
+    transaction.addTag('Content-Type', 'text/plain');
+
+    await arweave.transactions.sign(transaction, walletPrivateKey);
+    await arweave.transactions.post(transaction);
+
+    console.log('File uploaded to Arweave successfully!');
+    console.log('Transaction ID:', transaction.id);
+  } catch (error) {
+    console.error('Error uploading file to Arweave:', error);
+  }
+};
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.question('Enter your Arweave wallet address: ', (walletAddress) => {
+  rl.close();
+
+  const filePath = process.argv[2];
+  const walletPrivateKey = process.env.WALLET_PRIVATE_KEY;
+
+  uploadToArweave(filePath, walletAddress, walletPrivateKey);
+});
+
+
+
+
+
+Yes, the script is ready to go. Here's what you need to do next:
+
+Save the script with a filename like arweave.js in your core directory.
+Make sure you have Node.js and the required dependencies (arweave package) installed.
+Set the environment variable WALLET_PRIVATE_KEY to your Arweave wallet private key. This can be done by running the following command in the terminal:
+arduino
+Copy code
+export WALLET_PRIVATE_KEY=your_private_key
+Replace your_private_key with your actual wallet private key.
+Ensure that you have the file you want to upload to Arweave in your core directory.
+Open a terminal and navigate to your core directory.
+Run the script using the following command:
+bash
+Copy code
+node arweave.js path/to/your/file
+Replace path/to/your/file with the actual path to the file you want to upload.
+The script will prompt you to enter your Arweave wallet address. Enter your wallet address in the console.
+The script will then upload the file to Arweave using the provided wallet address and private key.
+After the upload is completed, the script will display a success message along with the transaction ID of the uploaded file.
+Please make sure to replace path/to/your/file with the actual path to the file you want to upload. Also, ensure that you have the correct Arweave wallet private key set as the WALLET_PRIVATE_KEY environment variable.
+
+Note that this script assumes you already have the arweave package installed. If not, you can install it by running npm install arweave in your core directory.

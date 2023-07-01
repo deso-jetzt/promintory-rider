@@ -1,0 +1,77 @@
+{
+  "name": "coreseed",
+  "version": "1.0.0",
+  "description": "This is the deso.jetzt seed node",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "build": "webpack",
+    "upload": "node upload-arweave.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deso-protocol/core.git"
+  },
+  "keywords": [
+    "API",
+    "SDK",
+    "arweave",
+    "block explorer",
+    "blockchain",
+    "bridges",
+    "consensus",
+    "coreseed",
+    "crypto",
+    "crypto wallet",
+    "cryptocurrency",
+    "decentralized",
+    "deso",
+    "development",
+    "developer",
+    "digital asset",
+    "dApp",
+    "encryption",
+    "framework",
+    "git",
+    "governance",
+    "interoperability",
+    "javascript",
+    "library",
+    "mining",
+    "network",
+    "node",
+    "node.js",
+    "open source",
+    "p2p",
+    "privacy",
+    "scalability",
+    "seed node",
+    "security",
+    "server",
+    "skhi",
+    "skhibridgx",
+    "smart contracts",
+    "smart wallet",
+    "staking",
+    "token",
+    "transaction",
+    "version control",
+    "web",
+    "web3"
+  ],
+  "author": "SkhiBridges",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deso-protocol/core/issues"
+  },
+  "homepage": "https://github.com/deso-protocol/core#readme",
+  "dependencies": {
+    "arweave": "^1.9.2",
+    "deso": "^0.1.0",
+    "fs": "0.0.1-security",
+    "websocket": "^1.0.34"
+  }
+}
